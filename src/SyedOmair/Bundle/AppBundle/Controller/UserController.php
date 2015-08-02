@@ -6,9 +6,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use FOS\RestBundle\Request\ParamFetcher;
 use FOS\RestBundle\Controller\Annotations\QueryParam;
-use CrowdValley\Bundle\CoreBundle\Controller\CVFOSRestController;
+use FOS\RestBundle\Controller\FOSRestController;
+use FOS\RestBundle\View\View;
 
-class UserController  extends CVFOSRestController
+class UserController  extends FOSRestController
 {
     /**
      *  Get Users 
@@ -21,13 +22,21 @@ class UserController  extends CVFOSRestController
      * @Route("/users")
      * @Method("GET")
      */
-    public function getUsersAction($network, ParamFetcher $paramFetcher) 
+    public function getUsersAction(ParamFetcher $paramFetcher) 
     {
         $page = $paramFetcher->get('page');
         $limit = $paramFetcher->get('limit');
         $orderby = $paramFetcher->get('orderby');
         $sort = $paramFetcher->get('sort');
-        return $this->handleView(array('test'));//$this->createView($this->get('cv_user')->getUsersForNetwork($network, $page, $limit, $orderby, $sort)));
+
+        $view = new View();
+        $view->setData('GET test');
+        $view->setStatusCode(200);
+        $view->setFormat('json');
+
+
+
+        return $this->handleView($view);//$this->createView($this->get('cv_user')->getUsersForNetwork($network, $page, $limit, $orderby, $sort)));
     }
 
     /**
@@ -36,10 +45,16 @@ class UserController  extends CVFOSRestController
      * @Route("/users")
      * @Method("POST")
      */
-    public function postUserAction(Request $request, $network) 
+    public function postUserAction(Request $request) 
     {
         $parameters = json_decode($request->getContent(), true);
-        return $this->handleView(array('test'));//$this->createView($this->get('cv_user')->create($parameters, $network, $request->getRequestUri())));
+
+        $view = new View();
+        $view->setData('POST test');
+        $view->setStatusCode(200);
+        $view->setFormat('json');
+
+        return $this->handleView($view);//$this->createView($this->get('cv_user')->create($parameters, $network, $request->getRequestUri())));
     }
 
 }

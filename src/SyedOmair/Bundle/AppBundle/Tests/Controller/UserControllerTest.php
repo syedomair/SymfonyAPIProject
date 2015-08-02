@@ -21,7 +21,7 @@ class UserControllerTest extends WebTestCase
     public function testGetAction()
     {
 
-        $route =  $this->getUrl('crowdvalley_api_user_postuser'));
+        $route =  $this->getUrl('syedomair_app_user_postuser');
         $requestPostArray = array('test');
         $requestPostArray = json_encode($requestPostArray);
         $this->client->request('POST', $route, array(), array(), array('CONTENT_TYPE' => 'application/json'),$requestPostArray);
