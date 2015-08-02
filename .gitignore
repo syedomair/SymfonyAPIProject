@@ -10,7 +10,6 @@
 /vendor/
 /web/bundles/
 /.idea
-src/CrowdValley/Bundle/CoreBundle/Entity/*.php~
 composer.lock
 /app/tmp/*
 /web/app/tmp/*
