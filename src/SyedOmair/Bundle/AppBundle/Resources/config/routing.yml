@@ -1,0 +1,19 @@
+api_homepage:
+    path:     /
+    defaults: { _controller: ApiBundle:Default:index }
+
+swagger_resource_json:
+    path:     /docs/api-docs.json
+    defaults: { _controller: ApiBundle:Default:resourceDocs }
+
+api_swagger:
+    path:     /docs/
+    defaults: { _controller: ApiBundle:Default:docs }
+
+rest_api:
+    resource: "@ApiBundle/Resources/config/rest_routing.yml"
+    prefix: /v1
+
+public_api:
+    type:   annotation
+    resource: CrowdValley\Bundle\ApiBundle\Controller\PublicController
