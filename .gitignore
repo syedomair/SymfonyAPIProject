@@ -13,3 +13,4 @@
 composer.lock
 /app/tmp/*
 /web/app/tmp/*
+app/logs/dev.log
