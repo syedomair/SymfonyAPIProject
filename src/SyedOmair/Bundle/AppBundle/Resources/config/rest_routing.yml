@@ -1,47 +1,5 @@
-authenticate:
-    type:     annotation
-    resource: CrowdValley\Bundle\ApiBundle\Controller\AuthenticateController
 
 user:
     type:     annotation
-    resource: CrowdValley\Bundle\ApiBundle\Controller\UserController
+    resource: SyedOmair\Bundle\AppBundle\Controller\UserController
 
-self:
-    type:     annotation
-    resource: CrowdValley\Bundle\ApiBundle\Controller\SelfController
-
-organization:
-    type:     annotation
-    resource: CrowdValley\Bundle\ApiBundle\Controller\OrganizationController
-
-offering:
-    type:     annotation
-    resource: CrowdValley\Bundle\ApiBundle\Controller\OfferingController
-
-investment:
-    type:     annotation
-    resource: CrowdValley\Bundle\ApiBundle\Controller\InvestmentController
-
-s3:
-    type:     annotation
-    resource: CrowdValley\Bundle\ApiBundle\Controller\S3Controller
-
-message:
-    type:     annotation
-    resource: CrowdValley\Bundle\ApiBundle\Controller\MessageController
-
-workflow:
-    type:     annotation
-    resource: CrowdValley\Bundle\ApiBundle\Controller\WorkflowController
-
-document:
-    type:     annotation
-    resource: CrowdValley\Bundle\ApiBundle\Controller\DocumentController
-
-forum:
-    type:     annotation
-    resource: CrowdValley\Bundle\ApiBundle\Controller\ForumController
-
-apihealth:
-    type:     annotation
-    resource: CrowdValley\Bundle\ApiBundle\Controller\ApiHealthController

@@ -1,9 +1,8 @@
 <?php
 
-namespace CrowdValley\Bundle\CoreBundle\Tests\Controller;
+namespace SyedOmair\Bundle\CoreBundle\Tests\Controller;
 
 use Liip\FunctionalTestBundle\Test\WebTestCase as WebTestCase;
-use CrowdValley\Bundle\CoreBundle\Tests\Fixtures\Entity\LoadPlanData;
 
 
 class UserControllerTest extends WebTestCase
