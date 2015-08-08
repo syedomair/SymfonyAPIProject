@@ -2,9 +2,9 @@
 parameters:
     database_host: 127.0.0.1
     database_port: 3306
-    database_name: crowdvalley1
-    database_user: growvc
-    database_password: pass
+    database_name: project1
+    database_user: user
+    database_password: testpass
     mailer_transport: smtp
     mailer_host: localhost
     mailer_user: a
