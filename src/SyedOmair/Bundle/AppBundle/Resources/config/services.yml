@@ -1,0 +1,10 @@
+services:
+    catalog_service:
+        class: SyedOmair\Bundle\AppBundle\Services\CatalogService
+        arguments:
+            container: "@service_container"
+            entity_manager: "@doctrine.orm.entity_manager"
+            error_service: "@error_service"
+
+    error_service:
+        class: SyedOmair\Bundle\AppBundle\Services\ErrorService

@@ -9,52 +9,49 @@ use FOS\RestBundle\Controller\Annotations\QueryParam;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\View\View;
 
-class UserController  extends FOSRestController
+class CatalogController  extends SOFOSRestController
 {
     /**
-     *  Get Users 
+     *  Get Catalogs 
      *             
      * @QueryParam(name="page", requirements="\d+", default="0", description="record offset.")
      * @QueryParam(name="limit", requirements="\d+", default="100", description="number of records.")
      * @QueryParam(name="orderby", requirements="[a-z]+", allowBlank=true, default="name", description="OrderBy field")
      * @QueryParam(name="sort", requirements="(asc|desc)+", allowBlank=true, default="asc", description="Sorting order")
      *             
-     * @Route("/users")
+     * @Route("/catalogs")
      * @Method("GET")
      */
-    public function getUsersAction(ParamFetcher $paramFetcher) 
+    public function getCatalogsAction(ParamFetcher $paramFetcher) 
     {
         $page = $paramFetcher->get('page');
         $limit = $paramFetcher->get('limit');
         $orderby = $paramFetcher->get('orderby');
         $sort = $paramFetcher->get('sort');
 
-        $view = new View();
-        $view->setData('GET test');
-        $view->setStatusCode(200);
-        $view->setFormat('json');
-
-
-
-        return $this->handleView($view);//$this->createView($this->get('cv_user')->getUsersForNetwork($network, $page, $limit, $orderby, $sort)));
+        return $this->handleView($this->createView($this->get('catalog_service')->getCatalogs($page, $limit, $orderby, $sort)));
     }
 
     /**
-     * Register a new User
+     * Create a new Catalog
      *
-     * @Route("/users")
+     * @Route("/catalog")
      * @Method("POST")
      */
-    public function postUserAction(Request $request) 
+    public function postCatalogAction(Request $request) 
     {
         $parameters = json_decode($request->getContent(), true);
-
-        $view = new View();
-        $view->setData('POST test');
-        $view->setStatusCode(200);
-        $view->setFormat('json');
-
-        return $this->handleView($view);//$this->createView($this->get('cv_user')->create($parameters, $network, $request->getRequestUri())));
+        return $this->handleView($this->createView($this->get('catalog_service')->create($parameters)));
     }
 
+    /**
+     * Retrieve information about this Catalog
+     *    
+     * @Route("/catalog/{catalog_id}")
+     * @Method("GET")
+     */
+    public function getCatalogAction($catalog_id) 
+    {
+        return $this->handleView($this->createView($this->get('catalog_service')->getACatalog($catalog_id)));
+    }
 }
