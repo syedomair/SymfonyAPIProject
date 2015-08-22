@@ -1,8 +1,10 @@
 
-user:
-    type:     annotation
-    resource: SyedOmair\Bundle\AppBundle\Controller\UserController
-
 catalog:
     type:     annotation
     resource: SyedOmair\Bundle\AppBundle\Controller\CatalogController
+category:
+    type:     annotation
+    resource: SyedOmair\Bundle\AppBundle\Controller\CategoryController
+product:
+    type:     annotation
+    resource: SyedOmair\Bundle\AppBundle\Controller\ProductController

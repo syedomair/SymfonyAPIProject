@@ -29,7 +29,7 @@ class CatalogControllerTest extends WebTestCase
         $this->client->request('POST', $route, array(), array(), array('CONTENT_TYPE' => 'application/json'),$requestPostArray);
  
         $response = $this->client->getResponse();
-        var_dump($response->getContent());
+        //var_dump($response->getContent());
         $this->assertEquals( $response->getStatusCode(), 200);
 
 //syedomair_app_catalog_getcatalog  GET    ANY    ANY  /app/catalog/{catalog_id}

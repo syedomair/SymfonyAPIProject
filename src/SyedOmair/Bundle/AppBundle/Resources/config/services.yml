@@ -6,5 +6,19 @@ services:
             entity_manager: "@doctrine.orm.entity_manager"
             error_service: "@error_service"
 
+    category_service:
+        class: SyedOmair\Bundle\AppBundle\Services\CategoryService
+        arguments:
+            container: "@service_container"
+            entity_manager: "@doctrine.orm.entity_manager"
+            error_service: "@error_service"
+
+    product_service:
+        class: SyedOmair\Bundle\AppBundle\Services\ProductService
+        arguments:
+            container: "@service_container"
+            entity_manager: "@doctrine.orm.entity_manager"
+            error_service: "@error_service"
+
     error_service:
         class: SyedOmair\Bundle\AppBundle\Services\ErrorService

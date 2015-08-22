@@ -45,9 +45,10 @@ class Product
     /**
      * @var string
      *
-     * @ORM\Column(name="short_desc", type="string", length=255, nullable=true)
+     * @ORM\Column(name="short_description", type="string", length=255, nullable=true)
      */
-    private $desc;
+    private $shortDescription;
+
 
     /**
      * @var \SyedOmair\Bundle\AppBundle\Entity\Category
@@ -138,28 +139,6 @@ class Product
         return $this->price;
     }
 
-    /**
-     * Set desc
-     *
-     * @param string $desc
-     * @return Product
-     */
-    public function setDesc($desc)
-    {
-        $this->desc = $desc;
-
-        return $this;
-    }
-
-    /**
-     * Get desc
-     *
-     * @return string 
-     */
-    public function getDesc()
-    {
-        return $this->desc;
-    }
 
     /**
      * Set category
@@ -182,5 +161,28 @@ class Product
     public function getCategory()
     {
         return $this->category;
+    }
+
+    /**
+     * Set shortDescription
+     *
+     * @param string $shortDescription
+     * @return Product
+     */
+    public function setShortDescription($shortDescription)
+    {
+        $this->shortDescription = $shortDescription;
+
+        return $this;
+    }
+
+    /**
+     * Get shortDescription
+     *
+     * @return string 
+     */
+    public function getShortDescription()
+    {
+        return $this->shortDescription;
     }
 }
