@@ -1,5 +1,5 @@
 
 rest_api:
     resource: "@AppBundle/Resources/config/rest_routing.yml"
-    prefix: /app
+    prefix: /api
 
