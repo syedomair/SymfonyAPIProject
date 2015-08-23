@@ -2,6 +2,7 @@
 namespace SyedOmair\Bundle\AppBundle\Services;
 
 use SyedOmair\Bundle\AppBundle\Entity\Product;
+use SyedOmair\Bundle\AppBundle\Exception\ProductServiceException;
 
 class ProductService extends BaseService
 {
@@ -13,6 +14,9 @@ class ProductService extends BaseService
 
     public function getAProduct($id)
     {
+        if(!is_numeric($id) )
+            $this->errorService->handleException((new ProductServiceException())->getProductsInvalidParameterId());
+
         $product =  $this->entityManager->getRepository('AppBundle:Product')->findOneById($id);
 
         $dataArray = array('product' => $this->responseArray($product));

@@ -4,18 +4,15 @@ namespace SyedOmair\Bundle\AppBundle\Services;
 use FOS\RestBundle\Util\Codes;
 use Symfony\Component\HttpFoundation\Request;
 use Exception;
+use SyedOmair\Bundle\AppBundle\Exception\CustomException;
 
 class ErrorService
 {
-    const ERROR_INVALID_PARAMETER = 'Invalid parameter';
-    const ERROR_INVALID = 'Invalid ';
-
-    protected function throwException($error_code, $user_msg, $developer_msg, $fields)
+    protected function throwException($error_code, $error_msg, $fields)
     {
         $errorObject = array(
             'code' => $error_code,
-            'user_message' => $user_msg,
-            'developer_message' => $developer_msg,
+            'error_message' => $error_msg,
             'fields' => $fields,
         );
 
@@ -28,4 +25,7 @@ class ErrorService
         throw new Exception(json_encode($errorArray) ,Codes::HTTP_BAD_REQUEST, NULL);
     }
 
+    public function handleException(CustomException $exception, $fields = array()) {
+        $this->throwException($exception->getCode(), $exception->geterrorMessage() , $fields);
+    }
 }
