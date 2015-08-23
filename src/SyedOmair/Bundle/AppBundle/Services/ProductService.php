@@ -19,6 +19,21 @@ class ProductService extends BaseService
         return $this->successResponse($dataArray);
     }
 
+    public function getProductsForCategory($category_id, $page, $limit,  $orderby, $sort)
+    {
+        $products = $this->entityManager->getRepository('AppBundle:Product')->findProductsForCategory($category_id, $page, $limit, $orderby, $sort);
+        $productsCount = $this->entityManager->getRepository('AppBundle:Product')->findProductsForCategoryCount($category_id);
+        
+        $rtnProducts = array();
+        $i=0;
+        foreach($products as $key=>$product)
+        {
+            $rtnProducts[$i] = $this-> responseArray($product);
+            $i++;
+        }
+        return $this->successResponseList($rtnProducts, $productsCount['product_count'], $page, $limit);
+    }
+
     public function create($parameters, $category_id)
     {
         $category = $this->entityManager->getRepository('AppBundle:Category')->findOneById($category_id);

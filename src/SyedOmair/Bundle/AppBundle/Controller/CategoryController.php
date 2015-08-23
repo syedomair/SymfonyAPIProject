@@ -19,17 +19,17 @@ class CategoryController  extends SOFOSRestController
      * @QueryParam(name="orderby", requirements="[a-z]+", allowBlank=true, default="name", description="OrderBy field")
      * @QueryParam(name="sort", requirements="(asc|desc)+", allowBlank=true, default="asc", description="Sorting order")
      *             
-     * @Route("/categories")
+     * @Route("/categories/{catalog_id}")
      * @Method("GET")
      */
-    public function getCategoriesAction(ParamFetcher $paramFetcher) 
+    public function getCategoriesAction($catalog_id, ParamFetcher $paramFetcher) 
     {
         $page = $paramFetcher->get('page');
         $limit = $paramFetcher->get('limit');
         $orderby = $paramFetcher->get('orderby');
         $sort = $paramFetcher->get('sort');
 
-        return $this->handleView($this->createView($this->get('category_service')->getCategories($page, $limit, $orderby, $sort)));
+        return $this->handleView($this->createView($this->get('category_service')->getCategoriesForCatalog($catalog_id, $page, $limit, $orderby, $sort)));
     }
 
     /**

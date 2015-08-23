@@ -38,7 +38,12 @@ class ProductControllerTest extends WebTestCase
         $categoryName = json_decode($response->getContent(), true)['data']['product']['name']; 
         $this->assertEquals($testDisplayName , $categoryName );
 
-// syedomair_app_product_getproducts    GET    ANY    ANY  /app/products                     
+        $route =  $this->getUrl('syedomair_app_product_getproducts', array('category_id' => 1 ));
+        $this->client->request('GET', $route);
+        $response = $this->client->getResponse();
+        var_dump($response->getContent());
+        $this->assertEquals( $response->getStatusCode(), 200);
+
 
 
     }

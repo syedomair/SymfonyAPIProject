@@ -19,6 +19,21 @@ class CategoryService extends BaseService
         return $this->successResponse($dataArray);
     }
 
+    public function getCategoriesForCatalog($catalog_id, $page, $limit,  $orderby, $sort)
+    {
+        $categories = $this->entityManager->getRepository('AppBundle:Category')->findCategoriesForCatalog($catalog_id, $page, $limit, $orderby, $sort);
+        $categoriesCount = $this->entityManager->getRepository('AppBundle:Category')->findCategoriesForCatalogCount($catalog_id);
+        
+        $rtnCategories = array();
+        $i=0;
+        foreach($categories as $key=>$category)
+        {
+            $rtnCategories[$i] = $this-> responseArray($category);
+            $i++;
+        }
+        return $this->successResponseList($rtnCategories, $categoriesCount['category_count'], $page, $limit);
+    }
+
     public function create($parameters, $catalog_id)
     {
         $catalog = $this->entityManager->getRepository('AppBundle:Catalog')->findOneById($catalog_id);

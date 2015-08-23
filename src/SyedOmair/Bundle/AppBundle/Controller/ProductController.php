@@ -11,25 +11,26 @@ use FOS\RestBundle\View\View;
 
 class ProductController  extends SOFOSRestController
 {
+
     /**
-     *  Get Categories 
+     *  Get Products 
      *             
      * @QueryParam(name="page", requirements="\d+", default="0", description="record offset.")
      * @QueryParam(name="limit", requirements="\d+", default="100", description="number of records.")
      * @QueryParam(name="orderby", requirements="[a-z]+", allowBlank=true, default="name", description="OrderBy field")
      * @QueryParam(name="sort", requirements="(asc|desc)+", allowBlank=true, default="asc", description="Sorting order")
      *             
-     * @Route("/products")
+     * @Route("/products/{category_id}")
      * @Method("GET")
      */
-    public function getProductsAction(ParamFetcher $paramFetcher) 
+    public function getProductsAction($category_id, ParamFetcher $paramFetcher) 
     {
         $page = $paramFetcher->get('page');
         $limit = $paramFetcher->get('limit');
         $orderby = $paramFetcher->get('orderby');
         $sort = $paramFetcher->get('sort');
 
-        return $this->handleView($this->createView($this->get('product_service')->getProducts($page, $limit, $orderby, $sort)));
+        return $this->handleView($this->createView($this->get('product_service')->getProductsForCategory($category_id, $page, $limit, $orderby, $sort)));
     }
 
     /**

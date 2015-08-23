@@ -30,7 +30,7 @@ class BaseService
             'count' => $count,
             'records' => $records,
             );
-        return $this->returnSuccessResponse($records);
+        return $this->successResponse($records);
     }
 
 }

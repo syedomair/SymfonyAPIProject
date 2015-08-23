@@ -40,8 +40,12 @@ class CategoryControllerTest extends WebTestCase
         $categoryName = json_decode($response->getContent(), true)['data']['category']['name']; 
         $this->assertEquals($testDisplayName , $categoryName );
 
-// syedomair_app_category_getcategories GET    ANY    ANY  /app/categories                   
-
+// syedomair_app_category_getcategories GET    ANY    ANY  /app/categories/{catalog_id}
+        $route =  $this->getUrl('syedomair_app_category_getcategories', array('catalog_id' => 1, 'page'=>0));
+        $this->client->request('GET', $route);
+        $response = $this->client->getResponse();
+        var_dump($response->getContent());
+        $this->assertEquals( $response->getStatusCode(), 200);
 
     }
 }
