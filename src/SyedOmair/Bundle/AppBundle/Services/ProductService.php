@@ -47,6 +47,7 @@ class ProductService extends BaseService
         $product->setSku($parameters['sku']);
         $product->setPrice($parameters['price']);
         $product->setShortDescription($parameters['short_desc']);
+        $product->setImage($parameters['image']);
         $product->setCategory($category);
         $this->entityManager->persist($product);
         $this->entityManager->flush();
@@ -65,6 +66,7 @@ class ProductService extends BaseService
             'sku' => $product->getSku(),
             'price' => $product->getPrice(),
             'short_desc' => $product->getShortDescription(),
+            'image' => $product->getImage(),
         );
     return $responseArray;
     }

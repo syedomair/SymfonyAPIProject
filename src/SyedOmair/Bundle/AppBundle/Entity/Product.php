@@ -45,6 +45,13 @@ class Product
     /**
      * @var string
      *
+     * @ORM\Column(name="image", type="string", length=32, nullable=true)
+     */
+    private $image;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="short_description", type="string", length=255, nullable=true)
      */
     private $shortDescription;
@@ -184,5 +191,28 @@ class Product
     public function getShortDescription()
     {
         return $this->shortDescription;
+    }
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     * @return Product
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string 
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }
