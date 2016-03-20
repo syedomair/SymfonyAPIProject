@@ -23,19 +23,25 @@ class UserService extends BaseService
     {
         $user = new User();
         $user->setEmail($parameters['email']);
-        $user->setPassword($parameters['password']);
         $user->setGivenName($parameters['first_name']);
         $user->setFamilyName($parameters['last_name']);
-        $user->setSalt('salt');
         $user->setCreatedAt(new \DateTime());
         $user->setUpdatedAt(new \DateTime());
+        $this->passwordEncryption($parameters['password'], $user);
         $this->entityManager->persist($user);
         $this->entityManager->flush();
 
         $dataArray = array('user_id' => $user->getId());
         return $this->successResponse($dataArray);
     }
-
+    private function passwordEncryption($password, $user){
+        $salt = $this->generateUserSalt();
+        $user->setPassword(crypt($password,$salt));
+        $user->setSalt($salt);
+    }
+    private function generateUserSalt(){
+        return base_convert(uniqid(mt_rand(), true), 16, 36);
+    }
     private function responseArray($user)
     {
         $responseArray = array(

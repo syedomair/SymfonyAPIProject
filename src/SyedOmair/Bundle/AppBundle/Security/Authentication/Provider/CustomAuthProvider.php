@@ -23,21 +23,21 @@ class CustomAuthProvider implements AuthenticationProviderInterface
 
     public function authenticate(TokenInterface $token)
     {
-            if($token->getUsername() == 'new')
+            if($token->getUsername() == 'new_user_registration')
                 return $token;
-            else{
-                $this->user = $this->userProvider->loadUserByUsername(array($token->getUsername(), $token->networkId));
+            else
+            {
+                $this->user = $this->userProvider->loadUserByUsername(array($token->getUsername()));
 
-                if ($this->user ) {
-                    //$encrypt = new Encrypt();
-                    //$plainPassword = $encrypt->decrypt(base64_decode($token->encryptedPass), $token->apiSecret);
-                    // TODO: Remove 3-rd parameter from isPasswordValid
-                    //$passwordValid = $this->container->get('PBKDF2_encoder')->isPasswordValid($this->user->getPassword(), $plainPassword, $this->user->getSalt(), $this->user);
-                    //if ($passwordValid) {
+                if($this->user ) 
+                {
+                    $plainUserPassword = base64_decode($token->encryptedPass);
+                    if($this->_hash_equals(crypt($plainUserPassword, $this->user->getSalt()), $this->user->getPassword())) 
+                    {
                         $authenticatedToken = new CustomAuthToken($this->user->getRoles());
                         $authenticatedToken->setUser($this->user);
                         return $authenticatedToken;
-//                    }
+                    }
                 }
 
             }
@@ -48,4 +48,20 @@ class CustomAuthProvider implements AuthenticationProviderInterface
     {
         return $token instanceof CustomAuthToken;
     }
+
+    private function _hash_equals($str1, $str2) 
+    {
+        if(strlen($str1) != strlen($str2)) 
+        {
+            return false;
+        } 
+        else 
+        {
+          $res = $str1 ^ $str2;
+          $ret = 0;
+          for($i = strlen($res) - 1; $i >= 0; $i--) $ret |= ord($res[$i]);
+          return !$ret;
+        }
+    }
+
 }

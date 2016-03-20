@@ -12,12 +12,12 @@ use Doctrine\ORM\EntityRepository;
 class UserRepository extends EntityRepository implements UserProviderInterface
 {
 
-    public function loadUserByUsername($params)
+    public function loadUserByUsername($parameters)
     {
-        $username = $params[0];
+        $email = $parameters[0];
         $user = $this->createQueryBuilder('u')
-            ->where('u.email = :username')
-            ->setParameter('username', $username)
+            ->where('u.email = :email')
+            ->setParameter('email', $email)
             ->getQuery()
             ->getOneOrNullResult();
 
@@ -27,7 +27,6 @@ class UserRepository extends EntityRepository implements UserProviderInterface
                 $username
             );
             return false;
-//            throw new UsernameNotFoundException($message);
         }
 
         return $user;
