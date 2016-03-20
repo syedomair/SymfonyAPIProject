@@ -4,6 +4,9 @@ security:
 
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
+        api_db_provider:
+            entity:
+                class: SyedOmair\Bundle\AppBundle\Entity\User
         in_memory:
             memory: ~
 
@@ -12,6 +15,12 @@ security:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
+        custom_secured:
+            pattern:   /api/.+
+            stateless: true
+            security: true
+            custom_auth:      true
+            provider: api_db_provider
 
         main:
             anonymous: ~

@@ -1,4 +1,12 @@
 services:
+    custom_auth.security.authentication.provider:
+        class: SyedOmair\Bundle\AppBundle\Security\Authentication\Provider\CustomAuthProvider
+        arguments: ["", "%kernel.cache_dir%/security/nonces"]
+
+    custom_auth.security.authentication.listener:
+        class: SyedOmair\Bundle\AppBundle\Security\Firewall\CustomAuthListener
+        arguments: ["@security.token_storage", "@security.authentication.manager"]
+
     catalog_service:
         class: SyedOmair\Bundle\AppBundle\Services\CatalogService
         arguments:
@@ -15,6 +23,13 @@ services:
 
     product_service:
         class: SyedOmair\Bundle\AppBundle\Services\ProductService
+        arguments:
+            container: "@service_container"
+            entity_manager: "@doctrine.orm.entity_manager"
+            error_service: "@error_service"
+
+    user_service:
+        class: SyedOmair\Bundle\AppBundle\Services\UserService
         arguments:
             container: "@service_container"
             entity_manager: "@doctrine.orm.entity_manager"
