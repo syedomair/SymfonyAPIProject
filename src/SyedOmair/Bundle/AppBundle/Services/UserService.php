@@ -2,6 +2,7 @@
 namespace SyedOmair\Bundle\AppBundle\Services;
 
 use SyedOmair\Bundle\AppBundle\Entity\User;
+use SyedOmair\Bundle\AppBundle\Exception\UserServiceException;
 
 class UserService extends BaseService
 {
@@ -21,8 +22,14 @@ class UserService extends BaseService
 
     public function create($parameters)
     {
+        $email = $parameters['email'];
+        $existingUser = $this->entityManager->getRepository('AppBundle:User')->findByEmail($email);
+
+        if($existingUser)
+            $this->errorService->handleException((new UserServiceException())->createUserAlreadyExists());
+
         $user = new User();
-        $user->setEmail($parameters['email']);
+        $user->setEmail($email);
         $user->setGivenName($parameters['first_name']);
         $user->setFamilyName($parameters['last_name']);
         $user->setCreatedAt(new \DateTime());
