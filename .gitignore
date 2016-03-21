@@ -3,6 +3,7 @@
 !app/cache/.gitkeep
 /app/config/parameters.yml
 /app/logs/*
+/app/logs/dev.log
 /app/phpunit.xml
 /bin/
 /composer.phar
