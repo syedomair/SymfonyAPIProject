@@ -6,7 +6,7 @@ use FOS\RestBundle\View\View;
 use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpKernel\Log\DebugLoggerInterface;
 
-class ExceptionController  extends ContainerAware
+class CustomExceptionController  extends ContainerAware
 {
     public function showAction(Request $request, $exception, DebugLoggerInterface $logger = null) 
     {
