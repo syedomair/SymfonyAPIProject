@@ -6,7 +6,7 @@ use SyedOmair\Bundle\AppBundle\Entity\Category;
 class CategoryService extends BaseService
 {
 
-    public function __construct($container, $entityManager, $errorService)
+    public function __construct($entityManager, $errorService)
     {
         parent::__construct($entityManager, $errorService);
     }

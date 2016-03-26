@@ -9,7 +9,7 @@ use FOS\RestBundle\Controller\Annotations\QueryParam;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\View\View;
 
-class CategoryController  extends SOFOSRestController
+class CategoryController  extends BaseFOSRestController
 {
     /**
      *  Get Categories 

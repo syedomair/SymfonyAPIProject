@@ -9,7 +9,7 @@ use FOS\RestBundle\Controller\Annotations\QueryParam;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\View\View;
 
-class CatalogController  extends SOFOSRestController
+class CatalogController  extends BaseFOSRestController
 {
     /**
      *  Get Catalogs 

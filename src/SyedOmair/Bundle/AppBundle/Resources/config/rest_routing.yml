@@ -3,6 +3,3 @@ user:
     type:     annotation
     resource: SyedOmair\Bundle\AppBundle\Controller\UserController
 
-authenticate:
-    type:     annotation
-    resource: SyedOmair\Bundle\AppBundle\Controller\AuthenticateController

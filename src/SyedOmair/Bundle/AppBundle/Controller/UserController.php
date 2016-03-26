@@ -9,8 +9,18 @@ use FOS\RestBundle\Controller\Annotations\QueryParam;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\View\View;
 
-class UserController  extends SOFOSRestController
+class UserController  extends BaseFOSRestController
 {
+
+    /**
+     * @Route("/api-login")
+     * @Method("GET")
+     */
+    public function getApiLoginAction(Request $request) 
+    {
+        $token = $request->headers->get('custom-auth');
+        return $this->handleView($this->createView($this->get('user_service')->apiLogin($token)));
+    }
 
     /**
      * Create a new User

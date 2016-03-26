@@ -7,7 +7,7 @@ use SyedOmair\Bundle\AppBundle\Exception\UserServiceException;
 class UserService extends BaseService
 {
 
-    public function __construct($container, $entityManager, $errorService)
+    public function __construct($entityManager, $errorService)
     {
         parent::__construct($entityManager, $errorService);
     }
@@ -35,20 +35,24 @@ class UserService extends BaseService
         $user->setCreatedAt(new \DateTime());
         $user->setUpdatedAt(new \DateTime());
         $this->passwordEncryption($parameters['password'], $user);
+
         $this->entityManager->persist($user);
         $this->entityManager->flush();
 
         $dataArray = array('user_id' => $user->getId());
         return $this->successResponse($dataArray);
     }
+
     private function passwordEncryption($password, $user){
         $salt = $this->generateUserSalt();
         $user->setPassword(crypt($password,$salt));
         $user->setSalt($salt);
     }
+
     private function generateUserSalt(){
         return base_convert(uniqid(mt_rand(), true), 16, 36);
     }
+
     private function responseArray($user)
     {
         $responseArray = array(
@@ -59,7 +63,7 @@ class UserService extends BaseService
     return $responseArray;
     }
 
-    public function authenticate($token)
+    public function apiLogin($token)
     {
         $rtnArray =  array('token' => $token);
         return $this->successResponse($rtnArray);

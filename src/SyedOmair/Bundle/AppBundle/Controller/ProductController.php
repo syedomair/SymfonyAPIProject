@@ -9,7 +9,7 @@ use FOS\RestBundle\Controller\Annotations\QueryParam;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\View\View;
 
-class ProductController  extends SOFOSRestController
+class ProductController  extends BaseFOSRestController
 {
 
     /**
