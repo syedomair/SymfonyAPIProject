@@ -5,7 +5,6 @@ use SyedOmair\Bundle\AppBundle\Entity\Catalog;
 
 class CatalogService extends BaseService
 {
-
     public function __construct($entityManager, $errorService)
     {
         parent::__construct($entityManager, $errorService);

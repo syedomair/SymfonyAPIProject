@@ -1,13 +1,10 @@
 <?php
-
 namespace SyedOmair\Bundle\AppBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
 
 class ProductRepository extends EntityRepository 
 {
-
-
     public function findProductsForCategory($category, $page, $limit, $orderby, $sort){
         switch ($orderby)
         {

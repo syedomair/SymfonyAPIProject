@@ -1,13 +1,10 @@
 <?php
-
 namespace SyedOmair\Bundle\AppBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
 
 class CategoryRepository extends EntityRepository 
 {
-
-
     public function findCategoriesForCatalog($catalog, $page, $limit, $orderby, $sort){
         switch ($orderby)
         {

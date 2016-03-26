@@ -1,9 +1,7 @@
 <?php
-
 namespace SyedOmair\Bundle\CoreBundle\Tests\Controller;
 
 use Liip\FunctionalTestBundle\Test\WebTestCase as WebTestCase;
-
 
 class ProductControllerTest extends WebTestCase
 {
@@ -43,8 +41,6 @@ class ProductControllerTest extends WebTestCase
         $response = $this->client->getResponse();
         var_dump($response->getContent());
         $this->assertEquals( $response->getStatusCode(), 200);
-
-
 
     }
 }

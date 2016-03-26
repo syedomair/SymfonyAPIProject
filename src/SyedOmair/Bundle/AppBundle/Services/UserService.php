@@ -26,7 +26,7 @@ class UserService extends BaseService
         $existingUser = $this->entityManager->getRepository('AppBundle:User')->findByEmail($email);
 
         if($existingUser)
-            $this->errorService->handleException((new UserServiceException())->createUserAlreadyExists());
+            $this->errorService->throwException((new UserServiceException())->createUserAlreadyExists());
 
         $user = new User();
         $user->setEmail($email);

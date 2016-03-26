@@ -1,5 +1,4 @@
 <?php
-
 namespace SyedOmair\Bundle\CoreBundle\Tests\Controller;
 
 use Liip\FunctionalTestBundle\Test\WebTestCase as WebTestCase;

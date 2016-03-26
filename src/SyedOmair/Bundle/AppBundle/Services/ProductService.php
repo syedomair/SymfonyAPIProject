@@ -15,7 +15,7 @@ class ProductService extends BaseService
     public function getAProduct($id)
     {
         if(!is_numeric($id) )
-            $this->errorService->handleException((new ProductServiceException())->getProductsInvalidParameterId());
+            $this->errorService->throwException((new ProductServiceException())->getProductsInvalidParameterId());
 
         $product =  $this->entityManager->getRepository('AppBundle:Product')->findOneById($id);
 

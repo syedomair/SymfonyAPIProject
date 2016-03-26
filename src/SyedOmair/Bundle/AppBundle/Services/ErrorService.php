@@ -8,22 +8,18 @@ use SyedOmair\Bundle\AppBundle\Exception\CustomException;
 
 class ErrorService
 {
-    protected function throwException($error_code, $error_msg)
-    {
-        $errorObject = array(
-            'code' => $error_code,
-            'error_message' => $error_msg
+    public function throwException(CustomException $exception) {
+
+        $data = array(
+            'error_code' => $exception->getErrorCode(),
+            'error_message' => $exception->geterrorMessage()
         );
 
         $errorArray = array(
-            'status' => $error_code,
-            'data' => $errorObject,
+            'status' => $exception->getCode(),
+            'data' => $data,
         );
         
         throw new Exception(json_encode($errorArray) ,Codes::HTTP_BAD_REQUEST, NULL);
-    }
-
-    public function handleException(CustomException $exception, $fields = array()) {
-        $this->throwException($exception->getCode(), $exception->geterrorMessage());
     }
 }
