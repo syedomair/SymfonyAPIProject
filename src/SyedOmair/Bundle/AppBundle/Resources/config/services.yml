@@ -1,10 +1,10 @@
 services:
     custom_auth.security.authentication.provider:
-        class: SyedOmair\Bundle\AppBundle\Security\Authentication\Provider\CustomAuthProvider
+        class: SyedOmair\Bundle\AppBundle\Security\CustomAuthProvider
         arguments: ["", "%kernel.cache_dir%/security/nonces"]
 
     custom_auth.security.authentication.listener:
-        class: SyedOmair\Bundle\AppBundle\Security\Firewall\CustomAuthListener
+        class: SyedOmair\Bundle\AppBundle\Security\CustomAuthListener
         arguments: ["@security.token_storage", "@security.authentication.manager"]
 
     catalog_service:

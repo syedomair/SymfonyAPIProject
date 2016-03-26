@@ -1,5 +1,4 @@
 <?php
-
 namespace SyedOmair\Bundle\AppBundle\DependencyInjection\Security\Factory;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;

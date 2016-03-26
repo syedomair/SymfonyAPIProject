@@ -1,12 +1,12 @@
 <?php
-namespace SyedOmair\Bundle\AppBundle\Security\Authentication\Provider;
+namespace SyedOmair\Bundle\AppBundle\Security;
 
 use Symfony\Component\Security\Core\Authentication\Provider\AuthenticationProviderInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\Exception\NonceExpiredException;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
-use SyedOmair\Bundle\AppBundle\Security\Authentication\Token\CustomAuthToken;
+use SyedOmair\Bundle\AppBundle\Security\CustomAuthToken;
 use Symfony\Component\Security\Core\Util\StringUtils;
 use Symfony\Component\HttpFoundation\Response;
 
