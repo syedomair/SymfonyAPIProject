@@ -33,16 +33,16 @@ class User implements UserInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="given_name", type="string", length=255, nullable=true)
+     * @ORM\Column(name="first_name", type="string", length=255, nullable=true)
      */
-    private $givenName;
+    private $firstName;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="family_name", type="string", length=255, nullable=true)
+     * @ORM\Column(name="last_name", type="string", length=255, nullable=true)
      */
-    private $familyName;
+    private $lastName;
 
     /**
      * @var \DateTime
@@ -108,6 +108,7 @@ class User implements UserInterface
         return $this->salt;
     }
 
+
     /**
      * Get id
      *
@@ -132,49 +133,49 @@ class User implements UserInterface
     }
 
     /**
-     * Set givenName
+     * Set firstName
      *
-     * @param string $givenName
+     * @param string $firstName
      * @return User
      */
-    public function setGivenName($givenName)
+    public function setFirstName($firstName)
     {
-        $this->givenName = $givenName;
+        $this->firstName = $firstName;
 
         return $this;
     }
 
     /**
-     * Get givenName
+     * Get firstName
      *
      * @return string 
      */
-    public function getGivenName()
+    public function getFirstName()
     {
-        return $this->givenName;
+        return $this->firstName;
     }
 
     /**
-     * Set familyName
+     * Set lastName
      *
-     * @param string $familyName
+     * @param string $lastName
      * @return User
      */
-    public function setFamilyName($familyName)
+    public function setLastName($lastName)
     {
-        $this->familyName = $familyName;
+        $this->lastName = $lastName;
 
         return $this;
     }
 
     /**
-     * Get familyName
+     * Get lastName
      *
      * @return string 
      */
-    public function getFamilyName()
+    public function getLastName()
     {
-        return $this->familyName;
+        return $this->lastName;
     }
 
     /**

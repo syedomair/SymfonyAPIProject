@@ -30,8 +30,8 @@ class UserService extends BaseService
 
         $user = new User();
         $user->setEmail($email);
-        $user->setGivenName($parameters['first_name']);
-        $user->setFamilyName($parameters['last_name']);
+        $user->setFirstName($parameters['first_name']);
+        $user->setLastName($parameters['last_name']);
         $user->setCreatedAt(new \DateTime());
         $user->setUpdatedAt(new \DateTime());
         $this->passwordEncryption($parameters['password'], $user);
@@ -57,8 +57,8 @@ class UserService extends BaseService
     {
         $responseArray = array(
             'id' => $user->getId(),
-            'first_name' => $user->getGivenName(),
-            'last_name' => $user->getFamilyName()
+            'first_name' => $user->getFirstName(),
+            'last_name' => $user->getLastName()
         );
     return $responseArray;
     }

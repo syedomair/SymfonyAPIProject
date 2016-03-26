@@ -107,15 +107,15 @@ DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
-  `given_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `family_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   `email_verified` tinyint(1) DEFAULT NULL,
   `password` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
   `salt` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
+  `first_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `last_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -124,7 +124,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (40,'omair1@gmail.com','Syed','Omair','2016-03-23 10:05:21','2016-03-23 10:05:21',NULL,'1fHh20BXyMalo','1fju6dt0wl1csgcogwkgsc84w');
+INSERT INTO `user` VALUES (46,'omair@gmail.com','2016-03-26 16:39:01','2016-03-26 16:39:01',NULL,'atd1W/VW94/nY','atrasmpqeyo0ckg8okowocgo','Syed','omair');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -137,4 +137,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-03-26 10:10:57
+-- Dump completed on 2016-03-26 16:39:29
