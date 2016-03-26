@@ -1,6 +1,6 @@
 
 rest_api:
-    resource: "@AppBundle/Resources/config/rest_routing.yml"
+    resource: "@AppBundle/Resources/config/secure_routing.yml"
     prefix: /secure
 
 catalog:
