@@ -11,7 +11,6 @@ use FOS\RestBundle\View\View;
 
 class UserController  extends BaseFOSRestController
 {
-
     /**
      * @Route("/api-login")
      * @Method("GET")

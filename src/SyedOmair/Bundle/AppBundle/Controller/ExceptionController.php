@@ -11,22 +11,8 @@ class ExceptionController  extends ContainerAware
     public function showAction(Request $request, $exception, DebugLoggerInterface $logger = null) 
     {
         $view = new View();
-        if($this->isJson($exception->getMessage()))
-        {
-            $tempArray = json_decode($exception->getMessage(), true);
-            $view->setData($tempArray);
-        }
-        else
-        {
-            $view->setData($exception->getMessage());
-        }
+        $view->setData(json_decode($exception->getMessage(), true));
         $view->setFormat('json');
         return $this->container->get('fos_rest.view_handler')->handle($view);
-    }
-
-    function isJson($string) 
-    {
-        json_decode($string);
-        return (json_last_error() == JSON_ERROR_NONE);
     }
 }

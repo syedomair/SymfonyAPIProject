@@ -15,11 +15,11 @@ class ErrorService
             'error_message' => $exception->geterrorMessage()
         );
 
-        $errorArray = array(
+        $error = array(
             'status' => $exception->getCode(),
             'data' => $data,
         );
         
-        throw new Exception(json_encode($errorArray) ,Codes::HTTP_BAD_REQUEST, NULL);
+        throw new Exception(json_encode($error) ,Codes::HTTP_BAD_REQUEST, NULL);
     }
 }

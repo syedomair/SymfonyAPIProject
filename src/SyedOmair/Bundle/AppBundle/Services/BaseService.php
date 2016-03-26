@@ -32,5 +32,4 @@ class BaseService
             );
         return $this->successResponse($records);
     }
-
 }

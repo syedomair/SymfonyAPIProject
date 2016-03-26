@@ -11,7 +11,6 @@ use FOS\RestBundle\View\View;
 
 class ProductController  extends BaseFOSRestController
 {
-
     /**
      *  Get Products 
      *             
